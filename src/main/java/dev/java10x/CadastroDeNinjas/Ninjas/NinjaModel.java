@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//Entity transforma uma classe em uma entidade do BD
+//Entity transforma uma classe numa entidade do BD
 @Entity
 @Table(name = "tb_cadastro")
 @Data
@@ -29,6 +29,9 @@ public class NinjaModel {
 
     @Column(name = "idade")
     private int idade;
+
+    @Column (name = "rank")
+    private String rank;
 
     // @ManyToOne um ninja tem uma unica missão
     @ManyToOne
