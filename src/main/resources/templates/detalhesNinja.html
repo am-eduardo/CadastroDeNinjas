@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalhe do Ninja</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #ff9900;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        a {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffcc66;
+        }
+
+        /* Container de Formulário e Mensagens */
+        .form-container, .details-container, .list-container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .mensagem {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo do Formulário (adicionarNinja.html) */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            background-color: #333;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button[type="submit"] {
+            background-color: #ff9900;
+            color: #121212;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ffcc66;
+        }
+
+        /* Estilo da Tabela (listarNinjas.html e detalhesNinja.html) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 12px;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #ff9900;
+            color: #121212;
+        }
+
+        img {
+            border-radius: 50%;
+            border: 3px solid #ff9900;
+            object-fit: cover;
+        }
+
+        tr:nth-child(even) {
+            background-color: #333;
+        }
+
+        /* Botões da Tabela */
+        td a {
+            margin-right: 10px;
+        }
+
+        /* Estilo do Botão de Adicionar (listarNinjas.html) */
+        .btn-adicionar {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-adicionar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<h1>Detalhes do Ninja</h1>
+<body><div th:if="${ninja != null}">
+    <img th:src="${ninja.imgURL}" alt="${ninja.nome}" width="200" />
+    <h2 th:text="${ninja.nome}"></h2>
+    <p><strong>Email:</strong> <span th:text="${ninja.email}"></span></p>
+    <p><strong>Idade:</strong> <span th:text="${ninja.idade}"></span></p>
+    <p><strong>Rank:</strong> <span th:text="${ninja.rank}"></span></p>
+
+    <h3>Missões:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Dificuldade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="missao : ${ninja.missoes}">
+            <td th:text="${missao.nome}"></td>
+            <td th:text="${missao.dificuldade}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<a href="/ninjas/ui/listar">Voltar para a lista de ninjas</a>
+</body>
+</html>
