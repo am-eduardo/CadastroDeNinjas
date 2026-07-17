@@ -15,7 +15,7 @@ O projeto foi estruturado seguindo os princípios da **Arquitetura de Camadas (L
 A aplicação está conteinerizada para facilitar os testes em qualquer ambiente. 
 
 1. Baixe a imagem oficial no Docker Hub:
-```bash
+```
 sudo docker pull edumaia101/cadastro_de_ninjas-amz:0.0.1
 ```
 
